@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class notFoundException extends Exception{
+public class NotFoundException extends Exception{
 
-    public notFoundException(Long id){
+    public NotFoundException(Long id){
         super ("Element Not Found by id:"+ id.toString());
     }
 }

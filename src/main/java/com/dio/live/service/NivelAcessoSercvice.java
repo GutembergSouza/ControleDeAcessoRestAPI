@@ -2,12 +2,10 @@ package com.dio.live.service;
 
 import com.dio.live.model.NivelAcesso;
 import com.dio.live.repository.NivelAcessoRepository;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NivelAcessoSercvice {
@@ -27,25 +25,25 @@ public class NivelAcessoSercvice {
         return nivelAcessoRepository.findAll();
     }
 
-    public NivelAcesso getById(Long id) throws notFoundException{
+    public NivelAcesso getById(Long id) throws NotFoundException {
         verifyExists(id);
         return nivelAcessoRepository.findById(id).get();
     }
 
-    public void deleteById(Long id)throws notFoundException{
+    public void deleteById(Long id)throws NotFoundException {
          verifyExists(id);
          nivelAcessoRepository.deleteById(id);
     }
 
-    public NivelAcesso update(NivelAcesso nivelAcesso) throws notFoundException{
+    public NivelAcesso update(NivelAcesso nivelAcesso) throws NotFoundException {
      verifyExists(nivelAcesso.getId());
      return nivelAcessoRepository.save(nivelAcesso);
     }
 
-    public NivelAcesso verifyExists(Long id)throws notFoundException{
+    public NivelAcesso verifyExists(Long id)throws NotFoundException {
        return nivelAcessoRepository
                 .findById(id)
-                .orElseThrow(()-> new notFoundException(id));
+                .orElseThrow(()-> new NotFoundException(id));
     }
 
 

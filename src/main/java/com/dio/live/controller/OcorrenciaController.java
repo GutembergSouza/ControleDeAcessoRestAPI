@@ -4,9 +4,8 @@ import com.dio.live.model.Ocorrencia;
 import com.dio.live.service.OcorrenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import  com.dio.live.service.notFoundException;
+import com.dio.live.service.NotFoundException;
 
 import java.util.List;
 
@@ -33,16 +32,16 @@ public class OcorrenciaController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") Long id) throws notFoundException {
+    public void deleteById(@PathVariable("id") Long id) throws NotFoundException {
        ocorrenciaService.deleteById(id);
     }
     @GetMapping("/{id}")
-    public Ocorrencia getById(@PathVariable("id") Long id) throws notFoundException{
+    public Ocorrencia getById(@PathVariable("id") Long id) throws NotFoundException {
        return ocorrenciaService.findByID(id);
     }
 
     @PutMapping
-    public Ocorrencia update(@RequestBody Ocorrencia ocorrencia) throws notFoundException{
+    public Ocorrencia update(@RequestBody Ocorrencia ocorrencia) throws NotFoundException {
        return ocorrenciaService.updateById(ocorrencia);
     }
 

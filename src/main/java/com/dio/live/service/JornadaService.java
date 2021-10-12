@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class JornadaService {
@@ -27,23 +26,23 @@ public class JornadaService {
        return   jornadaRepository.findAll();
     }
 
-    public JornadaTrabalho getById(Long id) throws notFoundException{
+    public JornadaTrabalho getById(Long id) throws NotFoundException {
         return verifyExists(id);
     }
 
-    public JornadaTrabalho update(JornadaTrabalho jornadaTrabalho)throws notFoundException{
+    public JornadaTrabalho update(JornadaTrabalho jornadaTrabalho)throws NotFoundException {
         verifyExists(jornadaTrabalho.getId());
         return jornadaRepository.save(jornadaTrabalho);
     }
 
-    public void delete(Long id) throws notFoundException {
+    public void delete(Long id) throws NotFoundException {
         verifyExists(id);
         jornadaRepository.deleteById(id);
     }
 
 
 
-    public JornadaTrabalho verifyExists(Long id) throws notFoundException{
-        return jornadaRepository.findById(id).orElseThrow(()-> new notFoundException(id));
+    public JornadaTrabalho verifyExists(Long id) throws NotFoundException {
+        return jornadaRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
     }
 }
