@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -22,5 +23,5 @@ public class Calendario {
     @ManyToOne
     private TipoData tipoData;
     private String descricao;
-    private LocalDateTime dataEspecial;
+    private LocalDate dataEspecial;
 }
