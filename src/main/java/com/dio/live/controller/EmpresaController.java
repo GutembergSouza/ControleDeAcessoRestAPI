@@ -4,6 +4,7 @@ import com.dio.live.model.Empresa;
 import com.dio.live.service.EmpresaService;
 import com.dio.live.service.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class EmpresaController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) throws NotFoundException{
         empresaService.delete(id);
     }

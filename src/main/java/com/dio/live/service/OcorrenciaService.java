@@ -13,7 +13,7 @@ public class OcorrenciaService {
     OcorrenciaRepository ocorrenciaRepository;
 
 
-    public Ocorrencia save(Ocorrencia ocorrencia){
+    public Ocorrencia create(Ocorrencia ocorrencia){
         return ocorrenciaRepository.save(ocorrencia);
     }
 
@@ -25,12 +25,12 @@ public class OcorrenciaService {
        return verifiIfExists(id);// caso nao enconmtre o elemento lanca a excecao e retorna 4040 not found
     }
 
-    public Ocorrencia updateById(Ocorrencia ocorrencia) throws NotFoundException {
+    public Ocorrencia update(Ocorrencia ocorrencia) throws NotFoundException {
         verifiIfExists(ocorrencia.getId());
         return ocorrenciaRepository.save(ocorrencia);
     }
 
-    public void deleteById(Long id) throws NotFoundException {
+    public void delete(Long id) throws NotFoundException {
         verifiIfExists(id); // caso nao encontre o id retorna 404 pra requisição
         ocorrenciaRepository.deleteById(id);
     }

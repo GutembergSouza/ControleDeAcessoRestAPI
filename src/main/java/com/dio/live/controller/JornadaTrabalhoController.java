@@ -3,6 +3,7 @@ package com.dio.live.controller;
 import com.dio.live.model.JornadaTrabalho;
 import com.dio.live.service.JornadaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class JornadaTrabalhoController {
 
     @PostMapping
     public JornadaTrabalho save(@RequestBody JornadaTrabalho jornadaTrabalho){
-        return jornadaService.save(jornadaTrabalho);
+        return jornadaService.create(jornadaTrabalho);
     }
 
     @GetMapping
@@ -26,7 +27,7 @@ public class JornadaTrabalhoController {
     }
 
     @GetMapping("/{id}")
-    public JornadaTrabalho getById(@PathVariable("id") Long id) throws Exception{
+    public JornadaTrabalho findById(@PathVariable("id") Long id) throws Exception{
        return jornadaService.getById(id);
     }
 
@@ -36,7 +37,8 @@ public class JornadaTrabalhoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteByID(@PathVariable("id") Long id) throws Exception {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id) throws Exception {
         jornadaService.delete(id);
     }
 

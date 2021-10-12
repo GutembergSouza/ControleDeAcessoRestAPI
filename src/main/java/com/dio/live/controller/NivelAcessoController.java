@@ -17,7 +17,7 @@ public class NivelAcessoController {
 
     @PostMapping
     public NivelAcesso createNivelAcesso(@RequestBody NivelAcesso nivelAcesso){
-        return nivelAcessoSercvice.save(nivelAcesso);
+        return nivelAcessoSercvice.create(nivelAcesso);
     }
 
     @GetMapping
@@ -26,14 +26,14 @@ public class NivelAcessoController {
     }
 
     @GetMapping("/{id}")
-    public NivelAcesso getById(@PathVariable ("id") Long id) throws Exception{
+    public NivelAcesso findById(@PathVariable ("id") Long id) throws Exception{
         return nivelAcessoSercvice.getById(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deletByID(@PathVariable("id")Long id)throws Exception {
-        nivelAcessoSercvice.deleteById(id);
+    public void delete(@PathVariable("id")Long id)throws Exception {
+        nivelAcessoSercvice.delete(id);
     }
 
     @PutMapping

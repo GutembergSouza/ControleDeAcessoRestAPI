@@ -5,6 +5,7 @@ import com.dio.live.repository.CategoriaUsuarioRepository;
 import com.dio.live.service.CategoriaUsuarioService;
 import com.dio.live.service.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class CategoriaUsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) throws NotFoundException {
         service.delete(id);
     }

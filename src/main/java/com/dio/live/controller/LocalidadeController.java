@@ -4,6 +4,7 @@ import com.dio.live.model.Localidade;
 import com.dio.live.service.LocalidadeService;
 import com.dio.live.service.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class LocalidadeController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id)throws NotFoundException{
         localidadeService.delete(id);
     }

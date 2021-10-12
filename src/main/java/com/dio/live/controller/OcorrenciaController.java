@@ -21,8 +21,8 @@ public class OcorrenciaController {
 
 
     @PostMapping
-    public Ocorrencia save(@RequestBody Ocorrencia ocorrencia){
-        return ocorrenciaService.save(ocorrencia);
+    public Ocorrencia create(@RequestBody Ocorrencia ocorrencia){
+        return ocorrenciaService.create(ocorrencia);
     }
 
     @GetMapping
@@ -33,16 +33,16 @@ public class OcorrenciaController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable("id") Long id) throws NotFoundException {
-       ocorrenciaService.deleteById(id);
+       ocorrenciaService.delete(id);
     }
     @GetMapping("/{id}")
-    public Ocorrencia getById(@PathVariable("id") Long id) throws NotFoundException {
+    public Ocorrencia findById(@PathVariable("id") Long id) throws NotFoundException {
        return ocorrenciaService.findByID(id);
     }
 
     @PutMapping
     public Ocorrencia update(@RequestBody Ocorrencia ocorrencia) throws NotFoundException {
-       return ocorrenciaService.updateById(ocorrencia);
+       return ocorrenciaService.update(ocorrencia);
     }
 
 }

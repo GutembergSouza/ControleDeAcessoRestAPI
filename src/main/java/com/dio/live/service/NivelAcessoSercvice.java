@@ -17,7 +17,7 @@ public class NivelAcessoSercvice {
         this.nivelAcessoRepository = nivelAcessoRepository;
     }// injeçao de dependencia
 
-    public NivelAcesso save(NivelAcesso nivelAcesso){
+    public NivelAcesso create(NivelAcesso nivelAcesso){
         return nivelAcessoRepository.save(nivelAcesso);
     }
 
@@ -30,7 +30,7 @@ public class NivelAcessoSercvice {
         return nivelAcessoRepository.findById(id).get();
     }
 
-    public void deleteById(Long id)throws NotFoundException {
+    public void delete(Long id)throws NotFoundException {
          verifyExists(id);
          nivelAcessoRepository.deleteById(id);
     }
