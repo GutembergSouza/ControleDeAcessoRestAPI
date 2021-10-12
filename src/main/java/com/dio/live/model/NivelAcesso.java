@@ -3,10 +3,9 @@ package com.dio.live.model;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -17,9 +16,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Audited
 public class NivelAcesso {
-    @Id
-    @GeneratedValue
+
+@Id
+@GeneratedValue
     private long id;
-    @NotNull
     private String descricao;
 }
