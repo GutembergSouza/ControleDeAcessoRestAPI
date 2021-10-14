@@ -1,6 +1,8 @@
-# diolive
+# API para controle de acesso
 
 Api rest para gerenciamento de ponto e controle de acesso.
+
+projeto desenvolvido para bootcamp java da Digital Inovation One
 
 Java | Spring boot | Spring Data Jpa | Hibernate | Lombok | swagger
 
