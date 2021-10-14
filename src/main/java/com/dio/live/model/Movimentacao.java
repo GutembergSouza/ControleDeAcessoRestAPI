@@ -3,6 +3,7 @@ package com.dio.live.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class Movimentacao {
         @NoArgsConstructor
         @EqualsAndHashCode
         @Embeddable
+        @Data
         public  class  MovimentacaoId implements Serializable{
             private long idMovimento;
             private long idUsuario;
