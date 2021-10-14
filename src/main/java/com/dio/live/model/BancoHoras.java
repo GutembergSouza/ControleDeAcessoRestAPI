@@ -1,6 +1,7 @@
 package com.dio.live.model;
 
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -30,6 +31,7 @@ public class BancoHoras {
         private long idUsuario;
 
     }
+
     @EmbeddedId
     private BancoHorasId bancoHorasId;
     private LocalDateTime dataTrabalhada;
