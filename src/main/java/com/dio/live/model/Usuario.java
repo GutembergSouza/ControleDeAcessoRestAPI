@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.time.LocalDateTime;
 
 @Getter
@@ -37,6 +38,6 @@ public class Usuario {
 
     private String nome;
     private BigDecimal tolerancia;
-    private LocalDateTime inicioJornada;
-    private LocalDateTime finalJornada;
+    private Time inicioJornada;
+    private Time finalJornada;
 }
