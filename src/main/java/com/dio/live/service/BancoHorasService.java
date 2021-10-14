@@ -8,38 +8,39 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-@Service
-public class BancoHorasService {
-    BancoHorasRepository bancoHorasRepository;
+    @Service
+    public class BancoHorasService {
+        BancoHorasRepository bancoHorasRepository;
 
-    @Autowired
-    public BancoHorasService(BancoHorasRepository bancoHorasRepository) {
-        this.bancoHorasRepository = bancoHorasRepository;
+        @Autowired
+        public BancoHorasService(BancoHorasRepository bancoHorasRepository) {
+            this.bancoHorasRepository = bancoHorasRepository;
+        }
+
+        public BancoHoras create(BancoHoras bancoHoras){
+            return bancoHorasRepository.save(bancoHoras);
+        }
+
+        public List<BancoHoras> listAll(){
+            return bancoHorasRepository.findAll();
+        }
+
+        public BancoHoras findById(Long id)throws NotFoundException{
+            verifyExists(id);
+            return bancoHorasRepository.findById(id).get();
+        }
+
+        public BancoHoras update(BancoHoras bancoHoras)throws NotFoundException{
+            return bancoHorasRepository.save(bancoHoras);
+        }
+
+        public void delete(Long id) throws NotFoundException{
+            verifyExists(id);
+            bancoHorasRepository.deleteById(id);
+        }
+
+        public BancoHoras verifyExists(Long id) throws NotFoundException{
+            return  bancoHorasRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
+        }
     }
 
-    public BancoHoras create(BancoHoras bancoHoras){
-        return bancoHorasRepository.save(bancoHoras);
-    }
-
-    public List<BancoHoras> listAll(){
-        return bancoHorasRepository.findAll();
-    }
-
-    public BancoHoras findById(Long id)throws NotFoundException{
-        verifyExists(id);
-        return bancoHorasRepository.findById(id).get();
-    }
-
-    public BancoHoras update(BancoHoras bancoHoras)throws NotFoundException{
-      return bancoHorasRepository.save(bancoHoras);
-    }
-
-    public void delete(Long id) throws NotFoundException{
-        verifyExists(id);
-        bancoHorasRepository.deleteById(id);
-    }
-
-    public BancoHoras verifyExists(Long id) throws NotFoundException{
-        return  bancoHorasRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
-    }
-}
